@@ -19,4 +19,16 @@ Se non avete completato il layout della calcolatrice potete usare il codice di p
 
 
 
-//transformare tutti gli id in numeri interi in js
+//transformare tutti gli id in numeri interi in js---
+
+//mettere in ascolto il button plus---
+
+---effettuare test con un pulsante, inserendo un addEventListener
+
+---se nel display è già presente uno 0 allora potremmo stampare un  valore che lo sostituisce.
+
+---altrimenti è possibile aggiungere più valori
+
+//ogni valore dovrà finire nel result
+
+//definire la funzione somma che prenda degli input. input1, input2.

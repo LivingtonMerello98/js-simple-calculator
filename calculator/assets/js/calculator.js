@@ -2,9 +2,15 @@
 
 console.log('sono connesso')
 
-//prendere tutti i valori numerici dal dom
+// prendere display e operatori della calcolatrice
 
-const result = document.getElementById('result');
+const inputDisplay = document.getElementById('result');
+const inputPlus = document.getElementById('plus');
+const inputMinus = document.getElementById('minus');
+const inputMultiply = document.getElementById('multiply');
+
+
+//prendere tutti i valori numerici dal dom
 
 const inputOne = document.getElementById('one');
 const inputTwo = document.getElementById('two');
@@ -28,4 +34,40 @@ const seven =  parseInt(inputSeven.textContent);
 const eight = parseInt(inputEight.textContent);
 const nine = parseInt(inputNine.textContent);
 
-console.log(sum);
+let result;
+
+
+//inseriamo all interno del display un carattere
+
+inputOne.addEventListener("click", function(){
+    
+    //condizionale
+    if(inputDisplay.textContent === '0'){
+        inputDisplay.textContent = "1";
+    } else{
+        inputDisplay.textContent += "1"
+    }
+     console.log("è stato premuto l'1");
+});
+
+
+
+//mettiamo in ascolto il tasto plus
+inputPlus.addEventListener("click",function(){
+   console.log(`è stato premuto il tasto +`)
+})
+
+
+
+
+//questa funzione deve prendere 2 input e sommarli
+function sum(input1, input2){
+
+    const sum = input1 +  input2;
+    console.log(sum);
+    return sum;
+
+}
+
+
+
