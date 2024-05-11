@@ -21,7 +21,7 @@ Se non avete completato il layout della calcolatrice potete usare il codice di p
 
 //transformare tutti gli id in numeri interi in js---
 
-//mettere in ascolto il button plus---
+//mettere in ascolto i numberButtons
 
 ---effettuare test con un pulsante, inserendo un addEventListener
 
@@ -29,6 +29,10 @@ Se non avete completato il layout della calcolatrice potete usare il codice di p
 
 ---altrimenti è possibile aggiungere più valori
 
-//ogni valore dovrà finire nel result
+---mettere in ascolto i buttonOperators
 
-//definire la funzione somma che prenda degli input. input1, input2.
+
+
+
+
+
