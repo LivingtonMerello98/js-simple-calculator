@@ -29,6 +29,6 @@ Se non avete completato il layout della calcolatrice potete usare il codice di p
 
 ---altrimenti è possibile aggiungere più valori
 
----mettere in ascolto i buttonOperators
+---mettere in ascolto i buttonOperator
 
-
+--- scrivere funzione per operatori

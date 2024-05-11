@@ -5,64 +5,109 @@ console.log('sono connesso')
 const inputDisplay = document.getElementById('result');
 const numberContainer = document.querySelector('.numbers');
 const operatorContainer = document.querySelector('.operators');
-const canc = document.getElementById('delete').value;
-const equal = document.getElementById('equal').value;
+const eraser = document.getElementById('erase');
+const equal = document.getElementById('equal');
 
 //debug for const
 console.log();
 
+//debug values
+test();
+
+function test(test){
+    console.log(test);
+}
 
 
-//var
-let operating;
-let operator;
+let btnValue;
+let firstOperand = '';
+let operator = '';
+let secondOperand = '';
 
+// Funzione per gestire i numeri
+function handleNumber(btnValue) {
 
-//numberContainer in ascolto
-numberContainer.addEventListener("click", function(e){
-
-    let btnValue = e.target.value;
     let limit = 8;
- 
-    //inserisce il primo numero rimuovendo lo 0
-    switch (true) {
-        
-        //display 0, si sostituisci con btnValue 
-        case inputDisplay.textContent === '0':
-            inputDisplay.textContent = btnValue;
 
-            console.log(`${inputDisplay.textContent} è stato premuto`)
-
-            break;
-        
-        //non più di 8 caratteri su schermo
-        case inputDisplay.textContent.length <= limit:
-            inputDisplay.textContent += btnValue;
-
-            console.log(`${btnValue} è stato premuto`)
-
-            break;
-    
-        default:
-            console.log(`È stato raggiunto il limite`);
+    if(inputDisplay.textContent.length >= limit ){
+        console.log(`limite massimo di carattere raggiunti`)
+        return
     }
-    
-    //si salva valore in var.
-    operating =  parseInt(inputDisplay.textContent);
 
-    console.log(`attuale num su display ${operating} `,typeof operating)
+    // Se non c'è un operatore, aggiungi il numero al primo operando
+    if (operator === '') {
+        firstOperand += btnValue;
+        inputDisplay.textContent = firstOperand;
+    } else {
+        // Altrimenti, aggiungi il numero al secondo operando
+        secondOperand += btnValue;
+        inputDisplay.textContent = secondOperand;
+    }
+}
 
-    return operating
-})
+// Funzione per gestire gli operatori
+function handleOperator(operatorValue) {
+    operator = operatorValue;
+}
 
+// Event listener per i numeri
+numberContainer.addEventListener("click", function(e){
+    let btnValue = e.target.value;
+    console.log(`${btnValue} è stato premuto`)
+    handleNumber(btnValue);
+});
 
-
-let operatorClicked = false;
-
-//operatorContainer in ascolto
+// Event listener per gli operatori
 operatorContainer.addEventListener("click", function(e){
-
-    let operatorValue = e.target.value
+    let operatorValue = e.target.value;
     console.log(`${operatorValue} è stato premuto`);
+    handleOperator(operatorValue);
+});
 
+// Event listener per il pulsante '='
+equal.addEventListener("click",function(e){
+    // Esegui l'operazione solo se ci sono sia un operatore che un secondo operando
+    if (operator !== '' && secondOperand !== '') {
+        let result = calculate();
+        inputDisplay.textContent = '';
+        // Resetta le variabili per la prossima operazione
+        firstOperand = result;
+        operator = '';
+        secondOperand = '';
+    }
+});
+
+
+//eraser in ascolto
+eraser.addEventListener("click",function(e){
+
+    //valore del button
+    let btnErase = e.target.value
+    console.log(`${btnErase} è stato premuto`)
+    inputDisplay.textContent = 0;
 })
+
+// Funzione per calcolare il risultato
+function calculate() {
+    let num1 = parseFloat(firstOperand);
+    let num2 = parseFloat(secondOperand);
+    let result = 0;
+
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break
+        case '-':
+            result = num1 - num2;
+            break
+        case '*':
+            result = num1 * num2;
+            break;
+        case '%':
+            result = num1 % num2;
+            break
+    }
+    return result;
+}
+
+
