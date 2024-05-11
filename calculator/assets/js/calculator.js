@@ -78,13 +78,17 @@ equal.addEventListener("click",function(e){
 });
 
 
-//eraser in ascolto
+//event listener per 'c' (eraser)
 eraser.addEventListener("click",function(e){
 
     //valore del button
     let btnErase = e.target.value
     console.log(`${btnErase} è stato premuto`)
     inputDisplay.textContent = 0;
+
+    //azzerare primo e secondo operando
+    firstOperand = ''
+    secondOperand = ''
 })
 
 // Funzione per calcolare il risultato
