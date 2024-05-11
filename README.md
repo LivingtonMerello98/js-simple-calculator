@@ -32,7 +32,3 @@ Se non avete completato il layout della calcolatrice potete usare il codice di p
 ---mettere in ascolto i buttonOperators
 
 
-
-
-
-
