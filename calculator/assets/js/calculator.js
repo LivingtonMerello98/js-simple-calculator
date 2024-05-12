@@ -30,27 +30,19 @@ function handleNumber(btnValue) {
         case inputDisplay.textContent.length >= 8:
             console.log(`Limite massimo di caratteri raggiunto`);
             return;
-        case inputDisplay.textContent === firstOperand && operator === '':
-            // Se il risultato è già presente sullo schermo e non c'è un operatore,
-            // inizia una nuova operazione con il numero premuto
-            firstOperand = btnValue;
-            inputDisplay.textContent = firstOperand;
-            break;
-        case secondOperand === '' && operator !== '':
-
-            secondOperand = btnValue;
-            inputDisplay.textContent = secondOperand;
-            break;
-        case operator === '':
-            firstOperand += btnValue;
-            inputDisplay.textContent = firstOperand;
-            break;
-        default:
+        case operator !== '':
+            // Se c'è un operatore, aggiungi il numero al secondo operando
             secondOperand += btnValue;
             inputDisplay.textContent = secondOperand;
             break;
+        default:
+            // Altrimenti, aggiungi il numero al primo operando
+            firstOperand += btnValue;
+            inputDisplay.textContent = firstOperand;
+            break;
     }
 }
+
 
 
 
@@ -105,31 +97,31 @@ function calculate() {
     switch (operator) {
         case '+':
             result = num1 + num2;
-            break
+            break;
         case '-':
             result = num1 - num2;
-            break
+            break;
         case '*':
             result = num1 * num2;
             break;
-            case '/':
-                // Verifica se il secondo operando è zero
-                if (num2 === 0) {
-                    console.log("Errore: divisione per zero");
-                    // mex errore
-                    return "Errore";
-                }
-                result = num1 / num2;
-                break;
-            case '%':
-                // Verifica se il secondo operando è zero
-                if (num2 === 0) {
-                    console.log("Errore: divisione per zero");
-                    // ritorna mex errore
-                    return "Errore";
-                }
-                result = num1 % num2;
-                break;
+        case '/':
+            // Verifica se il secondo operando è zero
+            if (num2 === 0) {
+                console.log("Errore: divisione per zero");
+                // mex errore
+                return "Errore";
+            }
+            result = num1 / num2;
+            break;
+        case '%':
+            // Verifica se il secondo operando è zero
+            if (num2 === 0) {
+                console.log("Errore: divisione per zero");
+                // mex errore
+                return "Errore";
+            }
+            result = num1 % num2;
+            break;
     }
     return result;
 }
