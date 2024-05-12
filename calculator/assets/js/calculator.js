@@ -26,24 +26,33 @@ let secondOperand = '';
 
 // Funzione per gestire i numeri
 function handleNumber(btnValue) {
+    switch (true) {
+        case inputDisplay.textContent.length >= 8:
+            console.log(`Limite massimo di caratteri raggiunto`);
+            return;
+        case inputDisplay.textContent === firstOperand && operator === '':
+            // Se il risultato è già presente sullo schermo e non c'è un operatore,
+            // inizia una nuova operazione con il numero premuto
+            firstOperand = btnValue;
+            inputDisplay.textContent = firstOperand;
+            break;
+        case secondOperand === '' && operator !== '':
 
-    let limit = 8;
-
-    if(inputDisplay.textContent.length >= limit ){
-        console.log(`limite massimo di carattere raggiunti`)
-        return
-    }
-
-    // Se non c'è un operatore, aggiungi il numero al primo operando
-    if (operator === '') {
-        firstOperand += btnValue;
-        inputDisplay.textContent = firstOperand;
-    } else {
-        // Altrimenti, aggiungi il numero al secondo operando
-        secondOperand += btnValue;
-        inputDisplay.textContent = secondOperand;
+            secondOperand = btnValue;
+            inputDisplay.textContent = secondOperand;
+            break;
+        case operator === '':
+            firstOperand += btnValue;
+            inputDisplay.textContent = firstOperand;
+            break;
+        default:
+            secondOperand += btnValue;
+            inputDisplay.textContent = secondOperand;
+            break;
     }
 }
+
+
 
 // Funzione per gestire gli operatori
 function handleOperator(operatorValue) {
@@ -81,15 +90,11 @@ equal.addEventListener("click",function(e){
 //event listener per 'c' (eraser)
 eraser.addEventListener("click",function(e){
 
-    //valore del button
-    let btnErase = e.target.value
-    console.log(`${btnErase} è stato premuto`)
-    inputDisplay.textContent = 0;
+    // Ricarica la pagina
+   location.reload();
+});
 
-    //azzerare primo e secondo operando
-    firstOperand = ''
-    secondOperand = ''
-})
+
 
 // Funzione per calcolare il risultato
 function calculate() {
