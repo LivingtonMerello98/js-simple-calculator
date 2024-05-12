@@ -112,9 +112,24 @@ function calculate() {
         case '*':
             result = num1 * num2;
             break;
-        case '%':
-            result = num1 % num2;
-            break
+            case '/':
+                // Verifica se il secondo operando è zero
+                if (num2 === 0) {
+                    console.log("Errore: divisione per zero");
+                    // mex errore
+                    return "Errore";
+                }
+                result = num1 / num2;
+                break;
+            case '%':
+                // Verifica se il secondo operando è zero
+                if (num2 === 0) {
+                    console.log("Errore: divisione per zero");
+                    // ritorna mex errore
+                    return "Errore";
+                }
+                result = num1 % num2;
+                break;
     }
     return result;
 }
