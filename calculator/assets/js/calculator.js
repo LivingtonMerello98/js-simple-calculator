@@ -24,10 +24,13 @@ let firstOperand = '';
 let operator = '';
 let secondOperand = '';
 
+
+
 // Funzione per gestire i numeri
 function handleNumber(btnValue) {
+    let limit
     switch (true) {
-        case inputDisplay.textContent.length >= 8:
+        case inputDisplay.textContent.length >= limit:
             console.log(`Limite massimo di caratteri raggiunto`);
             return;
         case operator !== '':
@@ -125,5 +128,7 @@ function calculate() {
     }
     return result;
 }
+
+
 
 
